@@ -1,25 +1,16 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
-    {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+  "browser_action": {
+    "default_popup": "index.html",
+    "default_title": "I Already Clicked That",
+    "default_icon": {
+      "48": "favicon.ico"
     }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  },
+  "description": "Helps you use websites lying about the freshness of their content (news sites, job boards...). It will let you know if you have already clicked on an article.",
+  "icons": {
+    "48": "favicon.ico"
+  },
+  "manifest_version": 2,
+  "name": "I Already Clicked That",
+  "version": "0.1.0"
 }
