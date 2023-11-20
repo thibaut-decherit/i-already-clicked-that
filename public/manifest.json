@@ -7,6 +7,11 @@
       "48": "favicon.ico"
     }
   },
+  "background": {
+    "scripts": [
+      "js/background/css-injection-on-updated-tab.js"
+    ]
+  },
   "content_security_policy": "default-src 'none'; form-action 'none'; frame-ancestors 'none';",
   "description": "Helps you use websites lying about the freshness of their content (news sites, job boards...). It will let you know if you have already clicked on an article.",
   "icons": {
@@ -14,5 +19,10 @@
   },
   "manifest_version": 2,
   "name": "I Already Clicked That",
+  "permissions": [
+    "storage",
+    "tabs",
+    "<all_urls>"
+  ],
   "version": "0.1.0"
 }
