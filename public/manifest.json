@@ -9,6 +9,7 @@
   },
   "background": {
     "scripts": [
+      "js/background/remove-url-parameter-on-updated-tab.js",
       "js/background/css-injection-on-activated-tab.js",
       "js/background/css-injection-on-updated-tab.js",
       "js/background/store-url-on-activated-tab.js"
@@ -24,6 +25,8 @@
   "permissions": [
     "storage",
     "tabs",
+    "webRequest",
+    "webRequestBlocking",
     "<all_urls>"
   ],
   "version": "0.1.0"
