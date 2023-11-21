@@ -10,7 +10,8 @@
   "background": {
     "scripts": [
       "js/background/css-injection-on-activated-tab.js",
-      "js/background/css-injection-on-updated-tab.js"
+      "js/background/css-injection-on-updated-tab.js",
+      "js/background/store-url-on-activated-tab.js"
     ]
   },
   "content_security_policy": "default-src 'none'; form-action 'none'; frame-ancestors 'none';",
