@@ -9,6 +9,7 @@
   },
   "background": {
     "scripts": [
+      "js/background/css-injection-on-activated-tab.js",
       "js/background/css-injection-on-updated-tab.js"
     ]
   },
