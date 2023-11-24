@@ -21,6 +21,7 @@
     "sourceType": "module"
   },
   "plugins": [
+    "import",
     "react",
     "react-hooks",
     "@typescript-eslint"
@@ -28,6 +29,10 @@
   "rules": {
   },
   "settings": {
+    "import/resolver": {
+      "node": true,
+      "typescript": true
+    },
     "react": {
       "version": "detect"
     }
