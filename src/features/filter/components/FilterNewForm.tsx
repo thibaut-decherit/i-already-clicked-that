@@ -1,3 +1,5 @@
+import {useFiltersStore} from "@/features/filter/stores/filters";
+import type {Filter} from "@/features/filter/types";
 import {handleSelect} from "@/utils/reactHookFormMultiSelectHandler";
 import {
   Button,
@@ -14,34 +16,38 @@ import {
 import {Controller, useForm} from "react-hook-form";
 import type {SubmitHandler} from "react-hook-form";
 
-const FilterNewForm = () => {
-  type Inputs = {
-    name: string,
-    resultsPageURLRegex: string,
-    resultsListSelector: string,
-    resultSelectorInResultsList: string,
-    resultPageURLRegex: string,
-    resultIdentifierRegex: string,
-    actionOnResultMatchInResultsList: string,
-    actionOnResultPageMatch: string[]
+const FilterNewForm = (
+  {
+    filter
+  }: {
+    filter?: Filter
+  }
+) => {
+  type Inputs = Omit<Filter, 'id'>;
+
+  const defaultValues = {
+    name: '',
+    resultsPageURLRegex: '',
+    resultsListSelector: '',
+    resultSelectorInResultsList: '',
+    resultPageURLRegex: '',
+    resultIdentifierRegex: '',
+    actionOnResultMatchInResultsList: '',
+    actionOnResultPageMatch: []
   };
 
+  const {addFilter, updateFilter} = useFiltersStore();
+
   const {control, formState: {errors}, handleSubmit} = useForm<Inputs>({
-    defaultValues: {
-      name: '',
-      resultsPageURLRegex: '',
-      resultsListSelector: '',
-      resultSelectorInResultsList: '',
-      resultPageURLRegex: '',
-      resultIdentifierRegex: '',
-      actionOnResultMatchInResultsList: '',
-      actionOnResultPageMatch: []
-    }
+    values: filter ?? defaultValues
   });
 
   const onSubmit: SubmitHandler<Inputs> = data => {
-    // TODO
-    console.log(data)
+    if (filter) {
+      updateFilter(filter.id, data)
+    } else {
+      addFilter(data);
+    }
   }
 
   return (
