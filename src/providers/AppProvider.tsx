@@ -1,3 +1,4 @@
+import {MUIThemeProvider} from "@/providers/MUIThemeProvider";
 import {ReactNode, Suspense} from "react";
 import {ErrorBoundary} from "react-error-boundary";
 import {MemoryRouter as Router} from "react-router-dom";
@@ -21,17 +22,19 @@ const AppProvider = (
   }
 ) => {
   return (
-    <Suspense
-      fallback={
-        <div className="flex items-center justify-center w-screen h-screen">
-          <h1>Loading...</h1>
-        </div>
-      }
-    >
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
-        <Router>{children}</Router>
-      </ErrorBoundary>
-    </Suspense>
+    <MUIThemeProvider>
+      <Suspense
+        fallback={
+          <div className="flex items-center justify-center w-screen h-screen">
+            <h1>Loading...</h1>
+          </div>
+        }
+      >
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <Router>{children}</Router>
+        </ErrorBoundary>
+      </Suspense>
+    </MUIThemeProvider>
   );
 };
 

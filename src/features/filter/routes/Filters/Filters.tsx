@@ -1,14 +1,16 @@
 import {Layout} from "@/components/Layout";
+import {NavbarLinkIcon} from "@/components/Navbar";
 
 const Filters = () => {
   return (
-    <Layout title="Filters">
+    <Layout
+      navbarRight={<NavbarLinkIcon ariaLabel="Add filter" iconClass="fa-plus" to="/filter/new"/>}
+      title="Filters"
+    >
       <span>TODO</span>
     </Layout>
   );
 }
-
-Filters.propTypes = {};
 
 export {
   Filters
