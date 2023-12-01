@@ -21,8 +21,10 @@ const Layout = (
   return (
     <>
       <Navbar left={navbarLeft} right={navbarRight} title={title}/>
-      <div className="container mx-auto my-10 flex flex-col justify-center">
-        {children}
+      <div className="container mx-auto flex flex-col justify-center">
+        <div className="m-10">
+          {children}
+        </div>
       </div>
     </>
   );
