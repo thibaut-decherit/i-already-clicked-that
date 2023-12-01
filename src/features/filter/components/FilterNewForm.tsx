@@ -7,14 +7,14 @@ import {
   FormControl,
   FormControlLabel,
   FormGroup,
-  FormHelperText, FormLabel,
-  InputLabel,
+  FormHelperText,
+  FormLabel,
   MenuItem,
   Select,
   TextField
 } from "@mui/material";
-import {Controller, useForm} from "react-hook-form";
 import type {SubmitHandler} from "react-hook-form";
+import {Controller, useForm} from "react-hook-form";
 
 const FilterNewForm = (
   {
@@ -57,15 +57,19 @@ const FilterNewForm = (
         name="name"
         render={({field}) => {
           return (
-            <TextField
-              {...field}
-              className="!mb-5"
-              error={!!errors.name}
-              helperText={errors?.name?.message}
-              label="Name"
-              required
-              variant="outlined"
-            />
+            <>
+              <FormLabel error={!!errors.name} htmlFor="input-name" required>
+                Name
+              </FormLabel>
+              <TextField
+                {...field}
+                className="!mb-5"
+                error={!!errors.name}
+                helperText={errors?.name?.message}
+                id="input-name"
+                required
+              />
+            </>
           );
         }}
         rules={{
@@ -81,15 +85,19 @@ const FilterNewForm = (
         name="resultsPageURLRegex"
         render={({field}) => {
           return (
-            <TextField
-              {...field}
-              className="!mb-5"
-              error={!!errors.resultsPageURLRegex}
-              helperText={errors?.resultsPageURLRegex?.message}
-              label="Regex to identify the URL of the results page"
-              required
-              variant="outlined"
-            />
+            <>
+              <FormLabel error={!!errors.resultsPageURLRegex} htmlFor="input-results-page-url-regex" required>
+                Regex to identify the URL of the results page
+              </FormLabel>
+              <TextField
+                {...field}
+                className="!mb-5"
+                error={!!errors.resultsPageURLRegex}
+                helperText={errors?.resultsPageURLRegex?.message}
+                id="input-results-page-url-regex"
+                required
+              />
+            </>
           );
         }}
         rules={{
@@ -105,15 +113,19 @@ const FilterNewForm = (
         name="resultsListSelector"
         render={({field}) => {
           return (
-            <TextField
-              {...field}
-              className="!mb-5"
-              error={!!errors.resultsListSelector}
-              helperText={errors?.resultsListSelector?.message}
-              label="DOM selector to target the results list element"
-              required
-              variant="outlined"
-            />
+            <>
+              <FormLabel error={!!errors.resultsListSelector} htmlFor="input-results-list-selector" required>
+                DOM selector to target the results list element
+              </FormLabel>
+              <TextField
+                {...field}
+                className="!mb-5"
+                error={!!errors.resultsListSelector}
+                helperText={errors?.resultsListSelector?.message}
+                id="input-results-list-selector"
+                required
+              />
+            </>
           );
         }}
         rules={{
@@ -129,15 +141,23 @@ const FilterNewForm = (
         name="resultSelectorInResultsList"
         render={({field}) => {
           return (
-            <TextField
-              {...field}
-              className="!mb-5"
-              error={!!errors.resultSelectorInResultsList}
-              helperText={errors?.resultSelectorInResultsList?.message}
-              label="DOM selector to target all result entries in the results list element"
-              required
-              variant="outlined"
-            />
+            <>
+              <FormLabel
+                error={!!errors.resultSelectorInResultsList}
+                htmlFor="input-result-selector-in-results-list"
+                required
+              >
+                DOM selector to target all result entries in the results list element
+              </FormLabel>
+              <TextField
+                {...field}
+                className="!mb-5"
+                error={!!errors.resultSelectorInResultsList}
+                helperText={errors?.resultSelectorInResultsList?.message}
+                id="input-result-selector-in-results-list"
+                required
+              />
+            </>
           );
         }}
         rules={{
@@ -153,15 +173,19 @@ const FilterNewForm = (
         name="resultPageURLRegex"
         render={({field}) => {
           return (
-            <TextField
-              {...field}
-              className="!mb-5"
-              error={!!errors.resultPageURLRegex}
-              helperText={errors?.resultPageURLRegex?.message}
-              label="Regex to identify the URL of the page of a given result"
-              required
-              variant="outlined"
-            />
+            <>
+              <FormLabel error={!!errors.resultPageURLRegex} htmlFor="input-result-page-url-regex" required>
+                Regex to identify the URL of the page of a given result
+              </FormLabel>
+              <TextField
+                {...field}
+                className="!mb-5"
+                error={!!errors.resultPageURLRegex}
+                helperText={errors?.resultPageURLRegex?.message}
+                id="input-result-page-url-regex"
+                required
+              />
+            </>
           );
         }}
         rules={{
@@ -177,15 +201,19 @@ const FilterNewForm = (
         name="resultIdentifierRegex"
         render={({field}) => {
           return (
-            <TextField
-              {...field}
-              className="!mb-5"
-              error={!!errors.resultIdentifierRegex}
-              helperText={errors?.resultIdentifierRegex?.message}
-              label="Regex to extract the identifier of a given result"
-              required
-              variant="outlined"
-            />
+            <>
+              <FormLabel error={!!errors.resultIdentifierRegex} htmlFor="input-result-identifier-regex" required>
+                Regex to extract the identifier of a given result
+              </FormLabel>
+              <TextField
+                {...field}
+                className="!mb-5"
+                error={!!errors.resultIdentifierRegex}
+                helperText={errors?.resultIdentifierRegex?.message}
+                id="input-result-identifier-regex"
+                required
+              />
+            </>
           );
         }}
         rules={{
@@ -201,22 +229,25 @@ const FilterNewForm = (
         name="actionOnResultMatchInResultsList"
         render={({field}) => {
           return (
-            <FormControl className="!mb-5" error={!!errors.actionOnResultMatchInResultsList} variant="outlined">
-              <InputLabel id="label-action-on-result-match-in-results-list">
+            <FormControl className="!mb-5" error={!!errors.actionOnResultMatchInResultsList} required>
+              <FormLabel
+                error={!!errors.actionOnResultMatchInResultsList}
+                htmlFor="select-action-on-result-match-in-results-list"
+                required
+              >
                 What to do when an already clicked match is found in the results list
-              </InputLabel>
+              </FormLabel>
               <Select
                 {...field}
-                label="What to do when an already clicked match is found in the results list"
-                labelId="label-action-on-result-match-in-results-list"
+                error={!!errors.actionOnResultMatchInResultsList}
+                id="select-action-on-result-match-in-results-list"
                 required
-                variant="outlined"
               >
                 <MenuItem value={'translucent'}>Make translucent</MenuItem>
                 <MenuItem value={'hide'}>Hide</MenuItem>
               </Select>
               {!!errors.actionOnResultMatchInResultsList &&
-                  <FormHelperText>{errors?.actionOnResultMatchInResultsList?.message}</FormHelperText>
+                  <FormHelperText error={true}>{errors?.actionOnResultMatchInResultsList?.message}</FormHelperText>
               }
             </FormControl>
           );
@@ -229,8 +260,8 @@ const FilterNewForm = (
         control={control}
         name="actionOnResultPageMatch"
         render={({field}) => (
-          <FormControl className="!mb-5" error={!!errors.actionOnResultPageMatch}>
-            <FormLabel id="label-action-on-result-page-match">
+          <FormControl className="!mb-5" error={!!errors.actionOnResultPageMatch} required>
+            <FormLabel id="label-action-on-result-page-match" required>
               What to do when the page of an already clicked match is visited
             </FormLabel>
             <FormGroup aria-labelledby="label-action-on-result-page-match">
