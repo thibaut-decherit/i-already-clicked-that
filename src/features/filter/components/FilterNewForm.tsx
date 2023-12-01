@@ -202,13 +202,13 @@ const FilterNewForm = (
         render={({field}) => {
           return (
             <FormControl className="!mb-5" error={!!errors.actionOnResultMatchInResultsList} variant="outlined">
-              <InputLabel id="select-action-on-result-match-in-results-list">
+              <InputLabel id="label-action-on-result-match-in-results-list">
                 What to do when an already clicked match is found in the results list
               </InputLabel>
               <Select
                 {...field}
                 label="What to do when an already clicked match is found in the results list"
-                labelId="select-action-on-result-match-in-results-list"
+                labelId="label-action-on-result-match-in-results-list"
                 required
                 variant="outlined"
               >
@@ -230,10 +230,10 @@ const FilterNewForm = (
         name="actionOnResultPageMatch"
         render={({field}) => (
           <FormControl className="!mb-5" error={!!errors.actionOnResultPageMatch}>
-            <FormLabel id="checkboxes-action-on-result-page-match">
+            <FormLabel id="label-action-on-result-page-match">
               What to do when the page of an already clicked match is visited
             </FormLabel>
-            <FormGroup aria-labelledby="checkboxes-action-on-result-page-match">
+            <FormGroup aria-labelledby="label-action-on-result-page-match">
               {
                 [
                   {
