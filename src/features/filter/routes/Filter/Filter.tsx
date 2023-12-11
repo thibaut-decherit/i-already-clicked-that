@@ -27,7 +27,7 @@ const Filter = () => {
     }
 
     navigate('/');
-  }
+  };
 
   const handleDelete = () => {
     if (!filter) {
@@ -36,7 +36,7 @@ const Filter = () => {
 
     removeFilter(filter.id);
     navigate('/');
-  }
+  };
 
   return (
     <Layout
