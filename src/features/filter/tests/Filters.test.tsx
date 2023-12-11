@@ -1,4 +1,4 @@
-import {render, screen} from "@testing-library/react";
+import {render, screen} from "@/test/reactTestingLibraryOverrides";
 import {Filters} from '../routes/Filters';
 
 describe('Filters', () => {

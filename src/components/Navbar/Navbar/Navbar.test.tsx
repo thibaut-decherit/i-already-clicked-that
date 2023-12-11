@@ -1,4 +1,4 @@
-import {render, screen} from "@testing-library/react";
+import {render, screen} from "@/test/reactTestingLibraryOverrides";
 import {Navbar} from "./Navbar";
 
 describe('Navbar', () => {
