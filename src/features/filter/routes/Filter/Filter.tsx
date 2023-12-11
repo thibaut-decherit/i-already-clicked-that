@@ -1,29 +1,13 @@
 import {Layout} from "@/components/Layout";
 import {NavbarLinkIcon} from "@/components/Navbar";
 import {FilterNewEditForm} from "@/features/filter/components/FilterNewEditForm";
-import {useFiltersStore} from "@/features/filter/stores/filters";
-import _ from "lodash";
-import {useParams} from "react-router-dom";
+import type {Filter as FilterType} from "@/features/filter/types";
+import type {Location} from "react-router-dom";
+import {useLocation} from "react-router-dom";
 
 const Filter = () => {
-  const {id} = useParams();
-
-  if (typeof id !== 'string' || (id.match(/\d+/) === null && id !== 'new')) {
-    throw Error('id type or content is not supported.');
-  }
-
-  let filter;
-
-  const {filters} = useFiltersStore();
-  if (id !== 'new') {
-    filter = _.find(filters, (filter) => {
-      return filter.id === id;
-    });
-
-    if (filter === undefined) {
-      throw Error('Filter not found.');
-    }
-  }
+  const locationState: Location<Partial<{ filter: FilterType }>> = useLocation();
+  const filter = locationState.state?.filter;
 
   const pageTitle = filter
     ? `Edit filter ${filter.name}`

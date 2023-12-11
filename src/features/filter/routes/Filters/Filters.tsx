@@ -14,7 +14,7 @@ const Filters = () => {
   const generateListItems = () => {
     return sortedFilters.map((filter) => {
       return (
-        <Link key={filter.id} to={`/filter/${filter.id}`}>
+        <Link key={filter.id} state={{filter}} to={`/filter/${filter.id}`}>
           <ListItem disablePadding divider={true}>
             <ListItemButton>
               <ListItemIcon>
