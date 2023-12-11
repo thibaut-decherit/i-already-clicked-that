@@ -16,7 +16,7 @@ import {
 import type {SubmitHandler} from "react-hook-form";
 import {Controller, useForm} from "react-hook-form";
 
-const FilterNewForm = (
+const FilterNewEditForm = (
   {
     filter
   }: {
@@ -309,8 +309,8 @@ const FilterNewForm = (
   );
 }
 
-FilterNewForm.propTypes = {};
+FilterNewEditForm.propTypes = {};
 
 export {
-  FilterNewForm
+  FilterNewEditForm
 };

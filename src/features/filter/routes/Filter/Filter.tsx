@@ -1,6 +1,8 @@
 import {Layout} from "@/components/Layout";
 import {NavbarLinkIcon} from "@/components/Navbar";
-import {FilterNewForm} from "@/features/filter/components/FilterNewForm";
+import {FilterNewEditForm} from "@/features/filter/components/FilterNewEditForm";
+import {useFiltersStore} from "@/features/filter/stores/filters";
+import _ from "lodash";
 import {useParams} from "react-router-dom";
 
 const Filter = () => {
@@ -10,8 +12,21 @@ const Filter = () => {
     throw Error('id type or content is not supported.');
   }
 
-  const pageTitle = id.match(/\d+/) !== null
-    ? `Edit filter`
+  let filter;
+
+  const {filters} = useFiltersStore();
+  if (id !== 'new') {
+    filter = _.find(filters, (filter) => {
+      return filter.id === id;
+    });
+
+    if (filter === undefined) {
+      throw Error('Filter not found.');
+    }
+  }
+
+  const pageTitle = filter
+    ? `Edit filter ${filter.name}`
     : 'Add a new filter';
 
   return (
@@ -19,7 +34,7 @@ const Filter = () => {
       navbarLeft={<NavbarLinkIcon ariaLabel="Back to filters list" iconClass="fa-solid fa-arrow-left" to={'/'}/>}
       title={pageTitle}
     >
-      <FilterNewForm/>
+      <FilterNewEditForm filter={filter}/>
     </Layout>
   );
 }

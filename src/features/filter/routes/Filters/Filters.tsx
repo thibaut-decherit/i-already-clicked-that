@@ -2,6 +2,7 @@ import {Layout} from "@/components/Layout";
 import {NavbarLinkIcon} from "@/components/Navbar";
 import {useFiltersStore} from "@/features/filter/stores/filters";
 import {List, ListItem, ListItemButton, ListItemIcon, ListItemText} from "@mui/material";
+import {Link} from "react-router-dom";
 
 const Filters = () => {
   const {filters} = useFiltersStore();
@@ -9,14 +10,16 @@ const Filters = () => {
   const generateListItems = () => {
     return filters.map((filter) => {
       return (
-        <ListItem disablePadding divider={true} key={filter.id}>
-          <ListItemButton>
-            <ListItemIcon>
-              <span className="fa fa-globe"/>
-            </ListItemIcon>
-            <ListItemText>{filter.name}</ListItemText>
-          </ListItemButton>
-        </ListItem>
+        <Link key={filter.id} to={`/filter/${filter.id}`}>
+          <ListItem disablePadding divider={true}>
+            <ListItemButton>
+              <ListItemIcon>
+                <span className="fa fa-globe"/>
+              </ListItemIcon>
+              <ListItemText>{filter.name}</ListItemText>
+            </ListItemButton>
+          </ListItem>
+        </Link>
       );
     });
   };
