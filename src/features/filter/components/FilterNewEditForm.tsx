@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import type {SubmitHandler} from "react-hook-form";
 import {Controller, useForm} from "react-hook-form";
+import {useNavigate} from "react-router-dom";
 
 const FilterNewEditForm = (
   {
@@ -42,12 +43,15 @@ const FilterNewEditForm = (
     values: filter ?? defaultValues
   });
 
+  const navigate = useNavigate();
   const onSubmit: SubmitHandler<Inputs> = data => {
     if (filter) {
       updateFilter(filter.id, data)
     } else {
       addFilter(data);
     }
+
+    return navigate('/');
   }
 
   return (
