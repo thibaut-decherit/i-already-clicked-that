@@ -1,4 +1,3 @@
-import {useFiltersStore} from "@/features/filter/stores/filters";
 import type {Filter} from "@/features/filter/types";
 import {handleSelect} from "@/utils/reactHookFormMultiSelectHandler";
 import {
@@ -14,19 +13,19 @@ import {
   TextField
 } from "@mui/material";
 import PropTypes from "prop-types";
-import type {SubmitHandler} from "react-hook-form";
 import {Controller, useForm} from "react-hook-form";
-import {useNavigate} from "react-router-dom";
+
+export type Inputs = Omit<Filter, 'id'>;
 
 const FilterNewEditForm = (
   {
-    filter
+    filter,
+    onSubmit
   }: {
-    filter?: Filter
+    filter?: Filter,
+    onSubmit: (data: Inputs) => void
   }
 ) => {
-  type Inputs = Omit<Filter, 'id'>;
-
   const defaultValues = {
     name: '',
     resultsPageURLRegex: '',
@@ -38,22 +37,9 @@ const FilterNewEditForm = (
     actionOnResultPageMatch: []
   };
 
-  const {addFilter, updateFilter} = useFiltersStore();
-
   const {control, formState: {errors}, handleSubmit} = useForm<Inputs>({
     values: filter ?? defaultValues
   });
-
-  const navigate = useNavigate();
-  const onSubmit: SubmitHandler<Inputs> = data => {
-    if (filter) {
-      updateFilter(filter.id, data)
-    } else {
-      addFilter(data);
-    }
-
-    return navigate('/');
-  }
 
   return (
     <form className="flex flex-col" noValidate onSubmit={handleSubmit(onSubmit)}>
@@ -309,13 +295,14 @@ const FilterNewEditForm = (
           required: 'Choose at least one action.'
         }}
       />
-      <Button className="bg-blue" type="submit" variant="contained">Create</Button>
+      <Button type="submit" variant="contained">Create</Button>
     </form>
   );
 }
 
 FilterNewEditForm.propTypes = {
-  filter: PropTypes.object
+  filter: PropTypes.object,
+  onSubmit: PropTypes.func.isRequired
 };
 
 export {

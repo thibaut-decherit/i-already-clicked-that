@@ -31,7 +31,10 @@ const Layout = (
 };
 
 Layout.propTypes = {
-  children: PropTypes.object.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.array.isRequired,
+    PropTypes.object.isRequired
+  ]),
   navbarLeft: PropTypes.object,
   navbarRight: PropTypes.object,
   title: PropTypes.string.isRequired
