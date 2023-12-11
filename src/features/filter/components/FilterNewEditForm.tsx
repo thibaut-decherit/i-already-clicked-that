@@ -13,6 +13,7 @@ import {
   Select,
   TextField
 } from "@mui/material";
+import PropTypes from "prop-types";
 import type {SubmitHandler} from "react-hook-form";
 import {Controller, useForm} from "react-hook-form";
 import {useNavigate} from "react-router-dom";
@@ -313,7 +314,9 @@ const FilterNewEditForm = (
   );
 }
 
-FilterNewEditForm.propTypes = {};
+FilterNewEditForm.propTypes = {
+  filter: PropTypes.object
+};
 
 export {
   FilterNewEditForm
