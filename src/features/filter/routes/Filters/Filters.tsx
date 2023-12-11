@@ -3,12 +3,16 @@ import {NavbarLinkIcon} from "@/components/Navbar";
 import {useFiltersStore} from "@/features/filter/stores/filters";
 import {List, ListItem, ListItemButton, ListItemIcon, ListItemText} from "@mui/material";
 import {Link} from "react-router-dom";
+import _ from "lodash";
 
 const Filters = () => {
   const {filters} = useFiltersStore();
+  const sortedFilters = _.sortBy(filters, (filter) => {
+    return filter.name;
+  });
 
   const generateListItems = () => {
-    return filters.map((filter) => {
+    return sortedFilters.map((filter) => {
       return (
         <Link key={filter.id} to={`/filter/${filter.id}`}>
           <ListItem disablePadding divider={true}>
