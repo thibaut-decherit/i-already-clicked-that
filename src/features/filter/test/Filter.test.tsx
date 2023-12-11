@@ -1,9 +1,9 @@
 import {render, screen} from "@/test/reactTestingLibraryOverrides";
-import {Navbar} from "./Navbar";
+import {Filter} from "../routes/Filter";
 
-describe('Navbar', () => {
+describe('Filter', () => {
   test('basic rendering', () => {
-    render(<Navbar title="dummy"/>);
+    render(<Filter/>);
     expect(screen.getByRole('heading', {level: 1})).toBeVisible();
   });
 });
