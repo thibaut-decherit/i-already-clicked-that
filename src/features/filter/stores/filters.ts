@@ -1,8 +1,10 @@
 import type {Filter} from "@/features/filter/types";
+import {storage} from "@/features/filter/utils/storage";
+import {isWebExtensionEnv} from "@/utils/isWebExtensionEnv";
+import _ from "lodash";
 import {nanoid} from "nanoid";
 import {create} from "zustand";
-import {persist} from "zustand/middleware";
-import _ from "lodash";
+import {createJSONStorage, persist} from "zustand/middleware";
 
 type FiltersStore = {
   addFilter: (filter: Omit<Filter, 'id'>) => void;
@@ -42,7 +44,12 @@ const useFiltersStore = create<FiltersStore, [['zustand/persist', unknown]]>(
       }
     }),
     {
-      name: 'filters'
+      name: 'filters',
+      /*
+      Uses storage dedicated to browser extensions. Except in dev env (web browser) for testing purposes, in which case
+      local storage is used instead.
+       */
+      storage: isWebExtensionEnv() ? storage : createJSONStorage(() => localStorage)
     }
   )
 );
