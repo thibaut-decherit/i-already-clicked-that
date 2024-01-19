@@ -21,7 +21,7 @@ const Filter = () => {
   const navigate = useNavigate();
   const handleSubmit: SubmitHandler<Inputs> = data => {
     if (filter) {
-      updateFilter(filter.id, data)
+      updateFilter(filter.id, data);
     } else {
       addFilter(data);
     }
